@@ -1,7 +1,6 @@
 const expressSession = require('express-session')
 const session = expressSession({
     name: 'connect.sid',
-    proxy: true,
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: false,

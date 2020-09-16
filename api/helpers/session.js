@@ -1,6 +1,6 @@
 const expressSession = require('express-session')
 const session = expressSession({
-    name: 'connect.sid',
+    name: 'sessionId.connect',
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: false,
@@ -16,6 +16,6 @@ module.exports = {
     destroySessionAndCookie: (req, res) => {
         req.session.destroy()
         res.cookie('CSRF_TOKEN', null, {maxAge: 0})
-        res.cookie('connect.sid', null, {maxAge: 0})
+        res.cookie('sessionId.connect', null, {maxAge: 0})
     }
 }

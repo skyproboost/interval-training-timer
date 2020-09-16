@@ -7,7 +7,7 @@ const session = expressSession({
     saveUninitialized: false,
     cookie: {
         sameSite: 'strict',
-        httpOnly: process.env.PROTOCOL !== 'https',
+        httpOnly: true,
         secure:  process.env.PROTOCOL === 'https'
     }
 })

@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken')
 const md5 = require('md5')
 const defaultConfigForJwt = {
-    expiresIn: 60 * 60 * 24 * 7
+    expiresIn: parseInt(process.env.EXPIRES)
 }
 
 module.exports = {
@@ -19,6 +19,7 @@ module.exports = {
         const salt = md5(process.env.SECRET)
         session._csrf = `${salt}---${md5(salt + ':' + process.env.CSRF_SECRET)}`
         res.cookie('CSRF_TOKEN', session._csrf, {
+            maxAge: parseInt(process.env.EXPIRES),
             sameSite: 'strict',
             httpOnly: false,
             secure: process.env.PROTOCOL === 'https'

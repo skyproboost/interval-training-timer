@@ -3,6 +3,7 @@ const User = require('../models/User')
 const validator = require('express-validator')
 const bcrypt = require('bcryptjs')
 const { verifyToken, signToken, createAndSaveCSRFToken } = require('../helpers/jwt_helper')
+const { destroySessionAndCookie } = require('../helpers/session')
 
 module.exports = {
     register: [
@@ -104,6 +105,14 @@ module.exports = {
             })
         }
     ],
+
+    logout: (req, res) => {
+        destroySessionAndCookie(req, res)
+        res.status(200).json({
+            status: 200,
+            message: 'Вы успешно разлогинилсь'
+        })
+    },
 
     user: (req, res) => {
         const token = req.headers.authorization

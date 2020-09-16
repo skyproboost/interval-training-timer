@@ -7,6 +7,7 @@ const session = expressSession({
     cookie: {
         sameSite: 'strict',
         httpOnly: true,
+        expires: parseInt(process.env.EXPIRES)
         // secure:  process.env.PROTOCOL === 'https'
     }
 })

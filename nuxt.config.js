@@ -76,7 +76,6 @@ export default {
         localStorage: false,
         cookie: {
             options: {
-                // httpOnly: true,
                 secure: process.env.PROTOCOL === 'https',
                 sameSite: 'strict'
             }

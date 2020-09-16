@@ -9,6 +9,7 @@ module.exports = (req, res, next) => {
                     return next()
                 }
             }
+
             destroySessionAndCookie(req, res)
             return res.status(403).json({
                 status: 403,

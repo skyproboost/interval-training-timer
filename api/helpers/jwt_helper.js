@@ -20,6 +20,7 @@ module.exports = {
         session._csrf = `${salt}---${md5(salt + ':' + process.env.CSRF_SECRET)}`
         res.cookie('CSRF_TOKEN', session._csrf, {
             sameSite: 'strict',
+            httpOnly: false,
             secure: process.env.PROTOCOL === 'https'
         })
     }

@@ -21,8 +21,7 @@ export default {
     methods: {
         async tryPost() {
             let result = await this.myAxios('/api/users/user/add', 'POST')
-            alert('Post request is success')
-            console.log(result)
+            alert(`Result: ${result ? 'success' : 'error'}`)
         },
         async logout() {
             await this.$auth.logout({
@@ -31,6 +30,9 @@ export default {
                 }
             })
         }
+    },
+    mounted() {
+        console.log(process.env)
     }
 }
 </script>

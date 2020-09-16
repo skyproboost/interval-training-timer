@@ -8,8 +8,13 @@
                 <p class="ml-3" v-for="(item, index) in $auth.user " :key="index">
                     {{index}}: <b>{{item}}</b>
                 </p>
+                <p>{{newXss}}</p>
                 <button @click="logout" class="btn btn-primary">Logout</button>
                 <button @click="tryPost" class="btn btn-primary">TEST POST METHOD</button>
+                <hr>
+                <input type="text" id="test">
+                <button @click="test" class="btn btn-primary">TEST</button>
+                <hr>
             </div>
         </div>
     </div>
@@ -18,6 +23,11 @@
 <script>
 export default {
     name: 'test',
+    data() {
+        return {
+            newXss: null
+        }
+    },
     methods: {
         async tryPost() {
             let result = await this.myAxios('/api/users/user/add', 'POST')
@@ -29,10 +39,13 @@ export default {
                     'X-CSRF-TOKEN': this.getCSRFToken()
                 }
             })
+        },
+        test() {
+            this.newXss = document.getElementById('test').value
         }
     },
     mounted() {
-        console.log(process.env)
+        this.newXss = "constructor.constructor('alert()')()"
     }
 }
 </script>

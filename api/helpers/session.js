@@ -1,5 +1,4 @@
 const expressSession = require('express-session')
-const protocol = process.env.HOST_FULL.split(':')[0]
 const session = expressSession({
     name: 'connect.sid',
     proxy: true,
@@ -8,8 +7,8 @@ const session = expressSession({
     saveUninitialized: false,
     cookie: {
         sameSite: 'strict',
-        httpOnly: protocol !== 'https',
-        secure:  protocol === 'https'
+        httpOnly: process.env.PROTOCOL !== 'https',
+        secure:  process.env.PROTOCOL === 'https'
     }
 })
 

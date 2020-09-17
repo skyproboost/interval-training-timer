@@ -177,5 +177,6 @@ export default {
     ],
     router: {
         middleware: ['auth']
-    }
+    },
+    render: { resourceHints: false }
 }

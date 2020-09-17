@@ -99,7 +99,6 @@ export default {
                         propertyName: 'user'
                     }
                 },
-                tokenRequired: true,
                 tokenType: process.env.AUTH_TOKEN_TYPE
             }
         },

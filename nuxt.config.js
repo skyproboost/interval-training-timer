@@ -16,6 +16,7 @@ export default {
     head: {
         title: process.env.npm_package_name || '',
         meta: [
+            { name: "metascan-verification", content: "rjycy15n7vp2q6gd"},
             { charset: 'utf-8' },
             { name: 'viewport', content: 'width=device-width, initial-scale=1' },
             {

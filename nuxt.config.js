@@ -1,10 +1,5 @@
 export default {
     /*
-    ** Nuxt rendering mode
-    ** See https://nuxtjs.org/api/configuration-mode
-    */
-    mode: 'universal',
-    /*
     ** Nuxt target
     ** See https://nuxtjs.org/api/configuration-target
     */
@@ -16,7 +11,7 @@ export default {
     head: {
         title: process.env.npm_package_name || '',
         meta: [
-            { name: "metascan-verification", content: "rjycy15n7vp2q6gd"},
+            { name: '6d252f0676c17575dc2658d3873bfd0b29db8fc9', content: '6f47a92254b11fb2790c2211d1459c2fc40042c7' },
             { charset: 'utf-8' },
             { name: 'viewport', content: 'width=device-width, initial-scale=1' },
             {
@@ -177,6 +172,5 @@ export default {
     ],
     router: {
         middleware: ['auth']
-    },
-    render: { resourceHints: false }
+    }
 }

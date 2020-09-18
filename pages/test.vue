@@ -6,9 +6,9 @@
                     User:
                 </h1>
                 <p class="ml-3" v-for="(item, index) in $auth.user " :key="index">
-                    {{index}}: <b>{{item}}</b>
+                    {{ index }}: <b>{{ item }}</b>
                 </p>
-                <p>{{newXss}}</p>
+                <p>{{ newXss }}</p>
                 <button @click="logout" class="btn btn-primary">Logout</button>
                 <button @click="tryPost" class="btn btn-primary">TEST POST METHOD</button>
                 <hr>
@@ -43,9 +43,6 @@ export default {
         test() {
             this.newXss = document.getElementById('test').value
         }
-    },
-    mounted() {
-        this.newXss = "constructor.constructor('alert()')()"
     }
 }
 </script>

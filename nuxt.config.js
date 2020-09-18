@@ -11,7 +11,6 @@ export default {
     head: {
         title: process.env.npm_package_name || '',
         meta: [
-            { name: '6d252f0676c17575dc2658d3873bfd0b29db8fc9', content: '6f47a92254b11fb2790c2211d1459c2fc40042c7' },
             { charset: 'utf-8' },
             { name: 'viewport', content: 'width=device-width, initial-scale=1' },
             {

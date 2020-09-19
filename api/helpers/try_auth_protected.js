@@ -8,6 +8,7 @@ module.exports = {
             if (blockedUser) {
                 if (!blockedUser.isBlocked) {
                     blockedUser.countRequest++
+                    blockedUser.createdAt = new Date()
                     if (blockedUser.countRequest > 3) {
                         blockedUser.isBlocked = true
                         await blockedUser.save()

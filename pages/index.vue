@@ -3,12 +3,13 @@
         <div class="row justify-content-center pt-5">
             <div class="col-md-6">
                 <div class="d-flex flex-column p-5 badge-secondary">
-                    <input class="form-control mb-1" v-model="client.login" type="text">
+                    <input placeholder="Введите логин" class="form-control mb-1" v-model="client.login" type="text">
                     <select class="form-control mb-1" v-model="client.sex">
                         <option value="male">Парень</option>
                         <option value="female">Девушка</option>
                     </select>
-                    <input class="form-control mb-1" v-model="client.password" type="password">
+                    <input placeholder="Введите пароль" class="form-control mb-1" v-model="client.password"
+                           type="password">
                     <button class="btn btn-success" @click="reg">Регистрация</button>
                 </div>
             </div>
@@ -16,8 +17,9 @@
         <div class="row justify-content-center pt-5">
             <div class="col-md-6">
                 <div class="d-flex flex-column p-5 badge-secondary">
-                    <input class="form-control mb-1" v-model="client.login" type="text">
-                    <input class="form-control mb-1" v-model="client.password" type="password">
+                    <input placeholder="Введите логин" class="form-control mb-1" v-model="client.login" type="text">
+                    <input placeholder="Введите пароль" class="form-control mb-1" v-model="client.password"
+                           type="password">
                     <button class="btn btn-success" @click="auth">Авторизация</button>
                 </div>
             </div>

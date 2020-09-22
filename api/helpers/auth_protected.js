@@ -6,23 +6,11 @@ const { destroySessionAndCookie } = require('./session')
 
 module.exports = {
     isAuthenticated: async (req, res, next) => {
-        console.log(req.path)
-        console.log(1)
         if (!excludeRoutes.includes(req.path)) {
-            console.log(req.session.ip)
-            console.log(req.ip)
-            console.log(2)
-            if (req.session.ip === req.ip) {
-                console.log(3)
-                await verifyToken(req, res, req.cookies['UID']).catch(error => response(res, 401, {
-                    error,
-                    message: 'Ошибка аутентификации'
-                }))
-            } else {
-                console.log(4)
-                destroySessionAndCookie(req, res)
-                return response(res, 401, { message: 'Ошибка аутентификации' })
-            }
+            await verifyToken(req, res, req.cookies['UID']).catch(error => response(res, 401, {
+                error,
+                message: 'Ошибка аутентификации'
+            }))
         }
         next()
     },

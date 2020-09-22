@@ -1,11 +1,10 @@
 <template>
-    <h1>RES</h1>
+    <h1>123</h1>
 </template>
 
 <script>
 export default {
-    name: 'res',
-    auth: 'guest'
+    name: 'res'
 }
 </script>
 

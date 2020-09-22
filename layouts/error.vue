@@ -1,5 +1,5 @@
 <template>
-    <NavigateErrors :error="error" />
+    <NavigateErrors class="center-content" :error="error" />
 </template>
 
 <script>
@@ -13,3 +13,13 @@
         }
     }
 </script>
+
+<style scoped>
+    .center-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        height: 100vh;
+    }
+</style>

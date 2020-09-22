@@ -56,7 +56,7 @@ export default {
         '@nuxtjs/axios',
         '@nuxtjs/pwa',
         '@nuxtjs/sitemap',
-        '@nuxtjs/auth',
+        // '@nuxtjs/auth',
         'nuxt-helmet',
         ['@nuxtjs/robots',
             {
@@ -67,43 +67,43 @@ export default {
         ]
     ],
 
-    auth: {
-        localStorage: false,
-        cookie: {
-            options: {
-                secure: process.env.PROTOCOL === 'https',
-                sameSite: 'strict'
-            }
-        },
-        strategies: {
-            local: {
-                endpoints: {
-                    login: {
-                        url: '/api/users/login',
-                        method: 'post',
-                        propertyName: 'token'
-                    },
-                    logout: {
-                        url: '/api/users/logout',
-                        method: 'post',
-                        propertyName: 'token'
-                    },
-                    user: {
-                        url: '/api/users/user',
-                        method: 'get',
-                        propertyName: 'user'
-                    }
-                },
-                tokenType: process.env.AUTH_TOKEN_TYPE
-            }
-        },
-        redirect: {
-            login: '/',
-            logout: '/',
-            home: '/'
-        },
-        rewriteRedirects: true
-    },
+    // auth: {
+    //     localStorage: false,
+    //     cookie: {
+    //         options: {
+    //             sameSite: 'strict'
+    //         }
+    //     },
+    //     strategies: {
+    //         local: {
+    //             endpoints: {
+    //                 login: {
+    //                     url: '/login',
+    //                     method: 'post',
+    //                     propertyName: 'token'
+    //                 },
+    //                 logout: {
+    //                     url: '/logout',
+    //                     method: 'post',
+    //                     propertyName: 'token'
+    //                 },
+    //                 user: {
+    //                     url: '/user',
+    //                     method: 'get',
+    //                     propertyName: 'user'
+    //                 }
+    //             },
+    //             tokenType: process.env.AUTH_TOKEN_TYPE
+    //         }
+    //     },
+    //     redirect: {
+    //         login: '/login',
+    //         logout: '/login',
+    //         callback: '/login',
+    //         home: '/'
+    //     },
+    //     rewriteRedirects: true
+    // },
 
     sitemap: {
         hostname: process.env.NODE_ENV === 'production' ? process.env.HOST_FULL : '',
@@ -168,8 +168,5 @@ export default {
     build: {},
     serverMiddleware: [
         '~/api/index.js'
-    ],
-    router: {
-        middleware: ['auth']
-    }
+    ]
 }

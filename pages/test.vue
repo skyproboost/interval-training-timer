@@ -5,16 +5,12 @@
                 <h1>
                     User:
                 </h1>
-                <p class="ml-3" v-for="(item, index) in $auth.user " :key="index">
-                    {{ index }}: <b>{{ item }}</b>
-                </p>
+                <pre>
+                    {{getUser}}
+                </pre>
                 <p>{{ newXss }}</p>
                 <button @click="logout" class="btn btn-primary">Logout</button>
-                <button @click="tryPost" class="btn btn-primary">TEST POST METHOD</button>
-                <hr>
-                <input type="text" id="test">
-                <button @click="test" class="btn btn-primary">TEST</button>
-                <hr>
+                <button @click="test" class="btn btn-primary">post</button>
             </div>
         </div>
     </div>
@@ -23,25 +19,24 @@
 <script>
 export default {
     name: 'test',
+    middleware: ['auth'],
     data() {
         return {
             newXss: null
         }
     },
     methods: {
-        async tryPost() {
-            let result = await this.myAxios('/api/users/user/add', 'POST')
-            alert(`Result: ${result ? 'success' : 'error'}`)
-        },
         async logout() {
-            await this.$auth.logout({
-                headers: {
-                    'X-CSRF-TOKEN': this.getCSRFToken()
-                }
-            })
+            await this.$axios.post('/logout')
+            await this.$router.push('/login')
         },
         test() {
-            this.newXss = document.getElementById('test').value
+            this.$axios.post('/test')
+        }
+    },
+    computed: {
+        getUser() {
+            return this.$store.getters['USER/GET_USER']
         }
     }
 }

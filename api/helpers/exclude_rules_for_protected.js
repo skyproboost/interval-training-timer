@@ -1,7 +1,9 @@
 const allowMethods = ['POST', 'PUT', 'DELETE', 'PATCH']
 const excludeRoutes = [
-    '/users/login',
-    '/users/register'
+    '/',
+    '/_loading/sse',
+    '/login',
+    '/register'
 ]
 
 module.exports = {

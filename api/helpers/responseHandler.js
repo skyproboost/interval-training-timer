@@ -1,14 +1,16 @@
-const responseTemplates = require('../helpers/response_templates')
+const statusesList = require('../helpers/response_template')
 
-module.exports = (res, statusCode, extraData = {}) => {
-    let template = responseTemplates[statusCode] ? responseTemplates[statusCode] : {}
-    template = { ...template, ...extraData }
+module.exports = {
+    response: (res, status, extraData = {}) => {
+        status = statusesList[status] ? status : 200
+        const response = {
+            message: extraData.message ? extraData.message : statusesList[status].message,
+            error: extraData.error ? extraData.error : null,
+            payload: extraData.payload ? extraData.payload : null,
+            status,
+            ...extraData
+        }
 
-    return res.status(statusCode).json({
-        status: statusCode,
-        message: template ? template.message : null,
-        error: template ? template.error : null,
-        code: template ? template.code : 0,
-        data: template ? template.data : null
-    })
+        return res.status(status).json({ ...response })
+    }
 }

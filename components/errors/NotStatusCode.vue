@@ -1,7 +1,7 @@
 <template>
     <div class="error-context">
         <div class="error-context-caption">Что-то пошло не так!</div>
-        <nuxt-link to="/">На главную</nuxt-link>
+        <ErrorButtonRedirect />
     </div>
 </template>
 

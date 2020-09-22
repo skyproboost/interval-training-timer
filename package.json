@@ -24,14 +24,18 @@
         "@nuxtjs/sitemap": "^2.4.0",
         "bcryptjs": "^2.4.3",
         "connect-mongodb": "^1.1.5",
+        "cookie-parser": "^1.4.5",
         "express": "^4.17.1",
         "express-session": "^1.17.1",
         "express-validator": "^6.6.1",
         "jsonwebtoken": "^8.5.1",
         "md5": "^2.3.0",
+        "memorystore": "^1.6.2",
         "mongoose": "^5.10.5",
         "nuxt": "^2.14.5",
         "nuxt-helmet": "^2.0.0",
+        "uuid": "^8.3.0",
+        "vuejs-noty-2": "^0.1.5",
         "vuelidate": "^0.7.5"
     },
     "devDependencies": {

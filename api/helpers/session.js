@@ -1,13 +1,21 @@
 const expressSession = require('express-session')
+const MemoryStore = require('memorystore')(expressSession)
+const { v4: uuid } = require('uuid')
 const session = expressSession({
-    name: 'sessionId.connect',
+    name: 'sessionID',
+    genid: () => uuid(),
     secret: process.env.SECRET,
+    proxy: false,
     resave: false,
     saveUninitialized: false,
+    rolling: true,
+    store: new MemoryStore({
+        checkPeriod: 86400000 // Удалять каждые 25 часа (Свойство опр. в мс)
+    }),
     cookie: {
         sameSite: 'strict',
         httpOnly: true,
-        expires: parseInt(process.env.EXPIRES)
+        expires: 86400
         // secure:  process.env.PROTOCOL === 'https'
     }
 })
@@ -15,8 +23,9 @@ const session = expressSession({
 module.exports = {
     session,
     destroySessionAndCookie: (req, res) => {
-        req.session.destroy()
-        res.cookie('CSRF_TOKEN', null, {maxAge: 0})
-        res.cookie('sessionId.connect', null, {maxAge: 0})
+        if (req.session) req.session.destroy()
+        res.cookie('CSRF_TOKEN', null, { maxAge: 0 })
+        res.cookie('sessionID', null, { maxAge: 0 })
+        res.cookie('UID', null, { maxAge: 0 })
     }
 }

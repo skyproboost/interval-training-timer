@@ -2,7 +2,7 @@
     <div class="error-context">
         <div class="error-context-caption">{{error.statusCode}}</div>
         <div class="error-context-message">{{error.message}}</div>
-        <nuxt-link to="/">На главную</nuxt-link>
+        <ErrorButtonRedirect />
     </div>
 </template>
 

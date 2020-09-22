@@ -81,7 +81,7 @@ module.exports = {
     },
 
     user: async (req, res) => {
-        if (req.ip === req.session.ip && req.cookies['UID']) {
+        if (req.cookies['UID']) {
             const user = await verifyToken(req, res, req.cookies['UID']).catch(error => response(res, 500, {
                 error,
                 message: 'Ошибка аутентификации'

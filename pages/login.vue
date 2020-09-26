@@ -19,9 +19,12 @@
 </template>
 
 <script>
+import mixin_auth_helper from '@/plugins/mixin_auth_helper'
+
 export default {
     name: 'login',
     auth: 'guest',
+    mixins: [mixin_auth_helper],
     data() {
         return {
             client: {
@@ -38,9 +41,11 @@ export default {
                     this.$store.commit('USER/SET_USER', res.data.payload)
                     await this.$router.push('/test')
                 })
-                .catch((error) => {
-                console.log('Error: ', error)
-            })
+                .catch(error => {
+                    this.resetClientData(this.client)
+                    this.notyErrorData(error.response.data)
+                })
+                .finally(() => this.loaderOff())
         }
     }
 }

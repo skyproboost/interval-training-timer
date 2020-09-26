@@ -10,13 +10,13 @@ const session = expressSession({
     saveUninitialized: false,
     rolling: true,
     store: new MemoryStore({
-        checkPeriod: 86400000 // Удалять каждые 25 часа (Свойство опр. в мс)
+        checkPeriod: 86400000 // Удалять просроченные сессии каждые 24 часа (Свойство опр. в мс)
     }),
     cookie: {
         sameSite: 'strict',
         httpOnly: true,
-        expires: 86400
-        // secure:  process.env.PROTOCOL === 'https'
+        expires: 86400,
+        secure:  process.env.PROTOCOL === 'https'
     }
 })
 

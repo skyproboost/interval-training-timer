@@ -4,6 +4,7 @@ export default {
     ** See https://nuxtjs.org/api/configuration-target
     */
     target: 'server',
+
     /*
     ** Headers of the page
     ** See https://nuxtjs.org/api/configuration-head
@@ -13,18 +14,14 @@ export default {
         meta: [
             { charset: 'utf-8' },
             { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-            {
-                hid: process.env.npm_package_name || '',
-                name: process.env.npm_package_name || '',
-                content: process.env.npm_package_description || ''
-            }
+            { hid: 'description', name: 'description', content: process.env.npm_package_description }
         ],
         link: [
-            { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-            { href: process.env.NODE_ENV === 'production' ? process.env.HOST_FULL : '', rel: 'canonical' }
-
+            { rel: 'icon', type: 'image/x-icon', href: '/favicon.svg' },
+            { href: process.env.HOST_FULL, rel: 'canonical' }
         ]
     },
+
     /*
     ** Global CSS
     */
@@ -32,6 +29,7 @@ export default {
         '~/assets/css/bootstrap.min.css',
         '~/assets/css/main.css'
     ],
+
     /*
     ** Plugins to load before mounting the App
     ** https://nuxtjs.org/guide/plugins
@@ -40,15 +38,20 @@ export default {
         '~/plugins/global-mixin',
         { src: '~/plugins/no-ssr.js', ssr: false }
     ],
+
     /*
     ** Auto import components
     ** See https://nuxtjs.org/api/configuration-components
     */
     components: true,
+
+    loading: '~/components/Loader.vue',
+
     /*
     ** Nuxt.js dev-modules
     */
     buildModules: [],
+
     /*
     ** Nuxt.js modules
     */
@@ -56,7 +59,6 @@ export default {
         '@nuxtjs/axios',
         '@nuxtjs/pwa',
         '@nuxtjs/sitemap',
-        // '@nuxtjs/auth',
         'nuxt-helmet',
         ['@nuxtjs/robots',
             {
@@ -67,51 +69,14 @@ export default {
         ]
     ],
 
-    // auth: {
-    //     localStorage: false,
-    //     cookie: {
-    //         options: {
-    //             sameSite: 'strict'
-    //         }
-    //     },
-    //     strategies: {
-    //         local: {
-    //             endpoints: {
-    //                 login: {
-    //                     url: '/login',
-    //                     method: 'post',
-    //                     propertyName: 'token'
-    //                 },
-    //                 logout: {
-    //                     url: '/logout',
-    //                     method: 'post',
-    //                     propertyName: 'token'
-    //                 },
-    //                 user: {
-    //                     url: '/user',
-    //                     method: 'get',
-    //                     propertyName: 'user'
-    //                 }
-    //             },
-    //             tokenType: process.env.AUTH_TOKEN_TYPE
-    //         }
-    //     },
-    //     redirect: {
-    //         login: '/login',
-    //         logout: '/login',
-    //         callback: '/login',
-    //         home: '/'
-    //     },
-    //     rewriteRedirects: true
-    // },
-
     sitemap: {
-        hostname: process.env.NODE_ENV === 'production' ? process.env.HOST_FULL : '',
+        hostname: process.env.HOST_FULL,
         gzip: true,
         routes: [
             '/'
         ]
     },
+
     manifest: {
         async: true,
         deffer: true,
@@ -132,7 +97,7 @@ export default {
         charset: 'utf-8',
         viewport: 'width=device-width, initial-scale=1',
         appleStatusBarStyle: 'white',
-        author: process.env.npm_package_autor || '',
+        author: process.env.npm_package_author || '',
         name: process.env.npm_package_name || '',
         description: process.env.npm_package_description || '',
         theme_color: '#ffffff',
@@ -153,6 +118,7 @@ export default {
             }
         ]
     },
+
     /*
     ** Axios module configuration
     ** See https://axios.nuxtjs.org/options
@@ -161,11 +127,13 @@ export default {
         https: process.env.PROTOCOL === 'https',
         baseURL: process.env.HOST_FULL
     },
+
     /*
     ** Build configuration
     ** See https://nuxtjs.org/api/configuration-build/
     */
     build: {},
+
     serverMiddleware: [
         '~/api/index.js'
     ]

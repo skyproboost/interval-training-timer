@@ -6,7 +6,7 @@
                     User:
                 </h1>
                 <pre>
-                    {{getUser}}
+                    {{ getUser }}
                 </pre>
                 <p>{{ newXss }}</p>
                 <button @click="logout" class="btn btn-primary">Logout</button>
@@ -27,11 +27,15 @@ export default {
     },
     methods: {
         async logout() {
+            this.loaderOn()
             await this.$axios.post('/logout')
             await this.$router.push('/login')
         },
         test() {
-            this.$axios.post('/test')
+            this.loaderOn()
+            this.$axios.post('/test').then(() => {
+                this.loaderOff()
+            })
         }
     },
     computed: {

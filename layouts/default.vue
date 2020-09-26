@@ -1,3 +1,8 @@
 <template>
-    <Nuxt />
+    <div>
+        <noscript inline-template>
+            <NoScript />
+        </noscript>
+        <Nuxt />
+    </div>
 </template>

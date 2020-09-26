@@ -5,20 +5,14 @@ Vue.mixin({
         // Отключения загрузчика
         loaderOff() {
             this.$nextTick(() => {
-                return new Promise(resolve => {
-                    this.$nuxt.$loading.finish()
-                    resolve()
-                })
+                this.$nuxt.$loading.finish()
             })
         },
 
         // Включение загрузчика
         loaderOn() {
             this.$nextTick(() => {
-                return new Promise(resolve => {
-                    this.$nuxt.$loading.start()
-                    resolve()
-                })
+                this.$nuxt.$loading.start()
             })
         }
     }

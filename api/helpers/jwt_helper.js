@@ -5,15 +5,18 @@ const md5 = require('md5')
 module.exports = {
     verifyToken: (req, res, token) => {
         return new Promise((resolve, reject) => {
-            token = token ? token : ''
-            const regexp = `^${process.env.AUTH_TOKEN_TYPE}\\s`
-
-            jwt.verify(token.replace(new RegExp(regexp, 'g'), ''), process.env.SECRET, (error, token) => {
-                if (error) {
-                    destroySessionAndCookie(req, res)
-                    reject(error)
-                } else resolve(token)
-            })
+            if (req.ip === req.session.ip) {
+                token = token ? token : ''
+                const regexp = `^${process.env.AUTH_TOKEN_TYPE}\\s`
+                return jwt.verify(token.replace(new RegExp(regexp, 'g'), ''), process.env.SECRET, (error, token) => {
+                    if (error) {
+                        destroySessionAndCookie(req, res)
+                        reject(error)
+                    } else resolve(token)
+                })
+            }
+            destroySessionAndCookie(req, res)
+            reject()
         })
     },
     signToken: (userData) => {

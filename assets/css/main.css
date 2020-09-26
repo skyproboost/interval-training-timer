@@ -82,5 +82,9 @@ a {
 }
 
 .noty_has_timeout .noty_progressbar {
-    height: 5px !important;
+    height: 7px !important;
+}
+
+.noty_bar .noty_body {
+    padding: 15px !important;
 }

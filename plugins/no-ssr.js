@@ -8,7 +8,7 @@ import VueNoty from 'vuejs-noty-2'
 Vue.use(Vuelidate);
 Vue.use(VueNoty, {
     timeout: 10000,
-    theme: 'nest',
+    theme: 'sunset',
     progressBar: true,
     layout: 'topRight',
     closeWith: ['button']

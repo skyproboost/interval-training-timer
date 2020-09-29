@@ -1,10 +1,12 @@
 <template>
-    <h1>123</h1>
+    <div>
+        123
+    </div>
 </template>
 
 <script>
 export default {
-    name: 'res'
+    name: 'registration'
 }
 </script>
 

@@ -79,8 +79,6 @@ export default {
 
     manifest: {
         async: true,
-        deffer: true,
-        crossorigin: 'use-credentials',
         name: process.env.npm_package_name || '',
         short_name: process.env.npm_package_name || '',
         description: process.env.npm_package_description || '',

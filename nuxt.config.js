@@ -18,7 +18,7 @@ export default {
         ],
         link: [
             { rel: 'icon', type: 'image/x-icon', href: '/favicon.svg' },
-            { href: process.env.HOST_FULL, rel: 'canonical' }
+            { href: 'https://interval-training-timer.ru', rel: 'canonical' }
         ]
     },
 
@@ -63,14 +63,14 @@ export default {
         ['@nuxtjs/robots',
             {
                 UserAgent: '*',
-                sitemap: process.env.NODE_ENV === 'production' ? process.env.HOST_FULL + '/sitemap.xml' : '',
+                sitemap: process.env.NODE_ENV === 'production' ? 'https://interval-training-timer.ru/sitemap.xml' : '',
                 allow: '/'
             }
         ]
     ],
 
     sitemap: {
-        hostname: process.env.HOST_FULL,
+        hostname: 'https://interval-training-timer.ru',
         gzip: true,
         routes: [
             '/'

@@ -124,8 +124,7 @@ export default {
     ** See https://axios.nuxtjs.org/options
     */
     axios: {
-        https: process.env.PROTOCOL === 'https',
-        baseURL: process.env.HOST_FULL
+        https: process.env.PROTOCOL === 'https'
     },
 
     /*

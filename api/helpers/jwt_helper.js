@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken')
 const { destroySessionAndCookie } = require('../helpers/session')
-const md5 = require('md5')
 
 module.exports = {
     verifyToken: (req, res, token) => {
@@ -29,13 +28,11 @@ module.exports = {
     },
     createAndSaveCSRFToken: (req, res, token) => {
         token = process.env.AUTH_TOKEN_TYPE + ' ' + token
-        const salt = md5(process.env.SECRET)
         const cookieSettings = {
             sameSite: 'strict',
             httpOnly: true,
             secure: process.env.PROTOCOL === 'https'
         }
-        req.session._csrf = `${salt}---${md5(salt + ':' + process.env.CSRF_SECRET)}`
         req.session.ip = req.ip
         req.session.token = token
 

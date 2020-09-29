@@ -121,7 +121,8 @@ export default {
     ** See https://axios.nuxtjs.org/options
     */
     axios: {
-        https: process.env.PROTOCOL === 'https'
+        https: process.env.PROTOCOL === 'https',
+        baseUrl: 'https://interval-training-timer.ru'
     },
 
     /*

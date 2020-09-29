@@ -116,18 +116,12 @@ export default {
             }
         ]
     },
-
-    env: {
-        baseUrl: process.env.HOST_FULL || 'http://localhost:3000'
-    },
-
     /*
     ** Axios module configuration
     ** See https://axios.nuxtjs.org/options
     */
     axios: {
-        https: process.env.PROTOCOL === 'https',
-        baseURL: process.env.HOST_FULL
+        https: process.env.PROTOCOL === 'https'
     },
 
     /*

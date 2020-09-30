@@ -90,6 +90,7 @@ module.exports = {
 
     user: async (req, res) => {
         if (req.cookies['UID']) {
+            console.log(1)
             await verifyToken(req, res, req.cookies['UID'])
                 .then(user => response(res, 200, { payload: user }))
                 .catch(error => response(res, 500, { error, message: message.errorAuth }))

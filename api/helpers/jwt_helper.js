@@ -5,6 +5,8 @@ module.exports = {
     verifyToken: (req, res, token) => {
         return new Promise((resolve, reject) => {
             token = token ? token : ''
+            console.log(2)
+            console.log(token)
             const regexp = `^${process.env.AUTH_TOKEN_TYPE}\\s`
             jwt.verify(token.replace(new RegExp(regexp, 'g'), ''), process.env.SECRET, (error, token) => {
                 console.log(token)

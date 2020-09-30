@@ -24,7 +24,6 @@ module.exports = {
     session,
     destroySessionAndCookie: (req, res) => {
         if (req.session) req.session.destroy()
-        res.cookie('CSRF_TOKEN', null, { maxAge: 0 })
         res.cookie('sessionID', null, { maxAge: 0 })
         res.cookie('UID', null, { maxAge: 0 })
     }

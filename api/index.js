@@ -7,6 +7,7 @@ const initProtectedCSRFMiddleware = require('./helpers/init_protected_csrf_middl
 const app = express()
 
 app.set('trust proxy', 'loopback')
+app.disable('x-powered-by');
 app.use(cookieParser())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))

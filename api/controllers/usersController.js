@@ -64,7 +64,7 @@ module.exports = {
                             }
                             await signToken(user)
                                 .then(async token => {
-                                    createAndSaveCSRFToken(req, res, token)
+                                    createSessionId(req, res, token)
                                     await resetTempBlockedUser(req, res)
                                         .then(() => response(res, 200, {
                                             message: message.auth,

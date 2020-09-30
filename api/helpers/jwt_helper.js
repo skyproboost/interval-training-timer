@@ -4,14 +4,18 @@ const { destroySessionAndCookie } = require('../helpers/session')
 module.exports = {
     verifyToken: (req, res, token) => {
         return new Promise((resolve, reject) => {
-            token = token ? token : ''
-            const regexp = `^${process.env.AUTH_TOKEN_TYPE}\\s`
-            return jwt.verify(token.replace(new RegExp(regexp, 'g'), ''), process.env.SECRET, (error, token) => {
-                if (error) {
-                    destroySessionAndCookie(req, res)
-                    reject(error)
-                } else resolve(token)
-            })
+            if (req.ip === req.session.ip) {
+                token = token ? token : ''
+                const regexp = `^${process.env.AUTH_TOKEN_TYPE}\\s`
+                return jwt.verify(token.replace(new RegExp(regexp, 'g'), ''), process.env.SECRET, (error, token) => {
+                    if (error) {
+                        destroySessionAndCookie(req, res)
+                        reject(error)
+                    } else resolve(token)
+                })
+            }
+            destroySessionAndCookie(req, res)
+            reject()
         })
     },
     signToken: (userData) => {
@@ -22,8 +26,9 @@ module.exports = {
             })
         })
     },
-    createAndSaveCSRFToken: (req, res, token) => {
+    createSessionId: (req, res, token) => {
         token = process.env.AUTH_TOKEN_TYPE + ' ' + token
+        console.log(process.env)
         const cookieSettings = {
             sameSite: 'strict',
             httpOnly: true,

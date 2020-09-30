@@ -5,7 +5,7 @@ const session = expressSession({
     name: 'sessionID',
     genid: () => uuid(),
     secret: process.env.SECRET,
-    proxy: false,
+    proxy: true,
     resave: false,
     saveUninitialized: false,
     rolling: true,

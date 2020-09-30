@@ -122,7 +122,7 @@ export default {
     */
     axios: {
         https: process.env.PROTOCOL === 'https',
-        baseUrl: 'https://interval-training-timer.ru'
+        proxy: true
     },
 
     /*

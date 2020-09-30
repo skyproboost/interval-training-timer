@@ -28,7 +28,7 @@ module.exports = {
     },
     createSessionId: (req, res, token) => {
         token = process.env.AUTH_TOKEN_TYPE + ' ' + token
-        console.error(process.env)
+        console.log(process.env)
         const cookieSettings = {
             sameSite: 'strict',
             httpOnly: true,

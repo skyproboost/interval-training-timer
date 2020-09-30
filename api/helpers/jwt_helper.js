@@ -6,7 +6,9 @@ module.exports = {
         return new Promise((resolve, reject) => {
             token = token ? token : ''
             const regexp = `^${process.env.AUTH_TOKEN_TYPE}\\s`
-            return jwt.verify(token.replace(new RegExp(regexp, 'g'), ''), process.env.SECRET, (error, token) => {
+            jwt.verify(token.replace(new RegExp(regexp, 'g'), ''), process.env.SECRET, (error, token) => {
+                console.log(token)
+                console.log(error)
                 if (error) {
                     destroySessionAndCookie(req, res)
                     reject(error)
